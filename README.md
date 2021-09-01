@@ -6,6 +6,16 @@ _TBD_
 
 ![](sequence.svg) 
 
+## Prerequisites
+
+_TBD_
+
+```bash
+$ luarocks install luajwtjitsi 2.0-0
+$ luarocks install http 0.4-0
+$ luarocks install lrexlib-POSIX 2.9.1-1
+```
+
 ## Configuration
 
 _TBD_
