@@ -4,6 +4,8 @@
 
 _TBD_
 
+Based upon https://github.com/matrix-org/prosody-mod-auth-matrix-user-verification
+
 ![](sequence.svg) 
 
 ## Prerequisites
