@@ -2,19 +2,14 @@
 
 ## Description
 
-_TBD_
-
-Based upon https://github.com/matrix-org/prosody-mod-auth-matrix-user-verification
+This prosody module implements authorization for Jitsi conferences based upon https://github.com/matrix-org/prosody-mod-auth-matrix-user-verification. Unlike prosody-mod-auth-matrix-user-verification, this module uses the extended OpenId user info described in [MSC3356](https://github.com/matrix-org/matrix-doc/pull/3356) for verifying the room membership of the user and does not rely on extra requests to Synapse-specific endpoints  (see https://github.com/matrix-org/synapse/blob/develop/docs/admin_api/rooms.md#room-state-api) as before.
+As there is no more need to configure a token for accessing the Synapse-admin-API of a specific homeserver, this module enables a single Jitsi server to authorize users against multiple homeservers.
 
 ![](sequence.svg) 
 
 ## Prerequisites
 
-_TBD_
-
-[Synapse - Extension of OpenID userinfo](https://github.com/matrix-org/synapse/pull/10384) (see [MSC3356](https://github.com/matrix-org/matrix-doc/pull/3356), https://github.com/matrix-org/matrix-doc/blob/4c415fb7bc2d991a4515820d8c4fda75e98ce94e/proposals/3356-add-openid-userinfo-fields.md)
-
-
+The module depends on `luajwtjitsi=2.0-0`, `http=0.4-0` and `lrexlib-POSIX=2.9.1-1`.
 
 ```bash
 $ luarocks install luajwtjitsi 2.0-0
@@ -24,7 +19,9 @@ $ luarocks install lrexlib-POSIX 2.9.1-1
 
 ## Configuration
 
-_TBD_
+Copy [mod_auth_matrix_user_verification.lua](mod_auth_matrix_user_verification.lua) to the Prosody plugins folder.
+
+Enable the module in the respective Prosody VirtualHost section. The set of authorized homeservers must be specified as a regular expression over the homeserver's hostname (option `matrix_homeserver_hostname_pattern`).
 
 ```lua
 VirtualHost "example.com"
